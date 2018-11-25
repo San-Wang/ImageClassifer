@@ -18,6 +18,8 @@ from keras import optimizers, models
 from keras.callbacks import Callback, LambdaCallback, TensorBoard, ModelCheckpoint, CSVLogger
 
 from keras import backend as K
+import numpy as np
+np.random.seed(2018)
 K.clear_session()
 K.set_image_dim_ordering('tf')
 

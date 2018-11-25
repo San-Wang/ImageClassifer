@@ -113,7 +113,6 @@ def init_cifar10_wider(args):
     conv2: 64*(3,3)
     pooling2
     conv3: 128*(3,3)
-    pooling3
     fc1: 256
     dropout
     fc2: 128
@@ -129,8 +128,7 @@ def init_cifar10_wider(args):
     conv2 = Conv2D(64, (3,3), padding='same', activation='relu', name='conv2')(pool1)
     pool2 = MaxPooling2D(name='pool2')(conv2)
     conv3 = Conv2D(128, (3,3), padding='same', activation='relu', name='conv3')(pool2)
-    pool3 = MaxPooling2D(name='pool3')(conv3)
-    flatten = Flatten(name='flatten')(pool3)
+    flatten = Flatten(name='flatten')(conv3)
     fc1 = Dense(units=256, activation='relu', name='fc1')(flatten)
     dropout = Dropout(rate=0.5, name='dropout')(fc1)
     fc2 = Dense(units=128, activation='relu', name='fc2')(dropout)
@@ -145,17 +143,7 @@ def init_cifar10_wider(args):
 
 def init_cifar10_deeper(args):
     """
-    input: 24*24*1
-    conv1: 32*(3,3)
-    pooling1: max
-    conv2: 64*(3,3)
-    pooling2
-    conv3: 128*(3,3)
-    pooling3
-    fc1: 256
-    dropout
-    fc2: 128
-    pred: 10
+
     """
     img_size = args.img_size
     channels = args.channels

@@ -6,7 +6,6 @@ import numpy as np
 
 from keras.callbacks import Callback, TensorBoard, ModelCheckpoint, CSVLogger
 
-np.random.seed(2018)
 
 class TimeLine(Callback):
     """ add current datetime at the beginning of epoch into logs dict"""

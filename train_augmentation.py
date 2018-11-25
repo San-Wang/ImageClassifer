@@ -19,17 +19,17 @@ K.set_image_dim_ordering('tf')
 def train_data_generator(root_dir, args):
     """ read train image data from directory using keras API
     """
-    preprocess_input = define_preprocess_func(args)
+    #preprocess_input = define_preprocess_func(args)
 
     train_datagen = image.ImageDataGenerator(
         # width_shift_range=0.1,
         # height_shift_range=0.1,
         # samplewise_center=True,
-        # samplewise_std_normalization=True,
-        # rescale=1. / 255,
-        preprocessing_function=preprocess_input,
-        # rotation_range=30,
-        # shear_range=0.1,
+        samplewise_std_normalization=True,
+        rescale=1. / 255,
+        #preprocessing_function=preprocess_input,
+        rotation_range=30,
+        shear_range=0.1,
         # zoom_range=0.1,
         # vertical_flip=True,
         # horizontal_flip=True

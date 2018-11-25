@@ -238,7 +238,7 @@ def data_pipeline(root_dir, transfrom_img):
 
     args:
         :root_dir: str, the path that contain images in sub folders(indicate class)
-        :transfrom_img: use preprocess.transfrom_img
+        :transfrom_img: use preprocess.define_preprocess_func
 
     return:
         :X: ndarray -> image data shape: [#sample, img_size,img_size, channels]
@@ -275,4 +275,10 @@ def data_pipeline(root_dir, transfrom_img):
     print(pd.Series(y).value_counts())
 
     return X, y
+
+def img_pipeline(img_path):
+
+    X = []
+    y = []
+    img = mpimg.imread(img_path)
 
