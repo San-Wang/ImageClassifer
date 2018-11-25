@@ -129,7 +129,7 @@ def init_cifar10_wider(args):
     pool2 = MaxPooling2D(name='pool2')(conv2)
     conv3 = Conv2D(128, (3,3), padding='same', activation='relu', name='conv3')(pool2)
     flatten = Flatten(name='flatten')(conv3)
-    fc1 = Dense(units=256, activation='relu', name='fc1')(flatten)
+    fc1 = Dense(units=512, activation='relu', name='fc1')(flatten)
     dropout = Dropout(rate=0.5, name='dropout')(fc1)
     fc2 = Dense(units=128, activation='relu', name='fc2')(dropout)
     predictions = Dense(units=num_class, activation='softmax', name='prediction')(fc2)

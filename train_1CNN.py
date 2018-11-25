@@ -10,7 +10,7 @@ from keras.utils import to_categorical
 
 from keras import backend as K
 import numpy as np
-np.random.seed(2018)
+np.random.seed(3)
 K.clear_session()
 K.set_image_dim_ordering('tf')
 

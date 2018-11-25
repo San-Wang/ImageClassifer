@@ -276,9 +276,16 @@ def data_pipeline(root_dir, transfrom_img):
 
     return X, y
 
-def img_pipeline(img_path):
+def img_pipeline(img_path, args):
 
     X = []
     y = []
     img = mpimg.imread(img_path)
+    img = transform_img(img, args)
+    img = image.img_to_array(img)
+    img = np.expand_dims(img, 0)
+    label = get_class_from_folder(img_path)
+    X.append(img)
+    y.append(label)
+    return X, y
 
