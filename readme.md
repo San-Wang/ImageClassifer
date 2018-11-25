@@ -28,6 +28,7 @@ Content included in this repo:
 
 Future add on
 -------------  
+[ ] 
 [ ] automating tensorboard viz for deeper layers  
 [ ] https://js.tensorflow.org/  
 note: train and deploy model in browser  
@@ -89,7 +90,7 @@ python3.6
 
 Scripts  
 ------  
-tool codebase:  
+modules:  
 proprocess.py: various data reading pipelines  
 CNNs.py: various pre-defined CNN structure  
 training.py: define training process   
@@ -140,23 +141,28 @@ https://blog.keras.io/how-convolutional-neural-networks-see-the-world.html
 https://www.cs.toronto.edu/~kriz/cifar.html  
 
 Experiment results:  
+
 Q1:  
+
 | model name| time (mins) | test acc |  
 |-----------|------|----------|  
 | customized_4_28_50_64_cell.h5 | 1.53 | 0.95625 |  
 
 Q2 (a)   
+
 | model name| time (mins) | test acc |  loss weight | note |  
-|-----------|-------------|----------|--------------|  
+|-----------|-------------|----------|--------------|------|  
 | 2CNN_10_28_100_64_try2.h5 | 27.81 | ('a_pred_acc', 0.45), ('b_pred_acc', 0.975) | 30:1 | loss doesn't improve around a_pred_acc: 0.8629 |  
 | 2CNN_10_28_100_64_try2.h5 | 26.33 | ('a_pred_acc', 0.453), ('b_pred_acc', 0.974) | 15: 1 | loss doesn't improve start epoch 71, around a_pred_acc: 0.77 |  
 
 Q2 b  
+
 | model name| time (mins) | test acc |  loss weight |  
 |-----------|-------------|----------|--------------|  
 | shared_10_28_100_64_try.h5 | 26.75 | ('a_pred_acc', 0.492), ('b_pred_acc', 0.974) | 15: 1 |  
 
-only classify cifar10
+only classify cifar10  
+
 | model name| time (mins) | test acc | note |     
 |-----------|-------------|----------|------|  
 | customized_10_28_100_64_shuffle.h5 | 14.09 | 0.509 | |  
