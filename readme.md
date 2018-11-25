@@ -6,7 +6,7 @@ ML challenge
 
 CHECKBOX  
 ========  
-
+```
 Content included in this repo:  
 |--Read data  
     |-- preprocess  
@@ -24,6 +24,7 @@ Content included in this repo:
         a. single image  
         √b. batch images  
     |--√confusion matrix  
+```  
 
 Future add on
 -------------  
@@ -33,8 +34,9 @@ note: train and deploy model in browser
 
 
 DATASET
-==============
+==============  
 * data structure  
+```
 Cells  
 Train: 2000 28*28 gray images evenly in 4 classes  
 Test: 800 28*28 gray images evenly in 4 classes  
@@ -73,8 +75,9 @@ Test: 1,000 28*28 gray images evenly in 10 classes
     |--7/ 7.png  
     |--8/ 8.png  
     |--9/ 9.png  
+```
     
-* data cleaning log:  
+* data cleaning log  
 
 
 USE INSTRUCTION  
