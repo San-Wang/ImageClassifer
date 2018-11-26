@@ -46,10 +46,10 @@ if __name__ == '__main__':
             self.img_size = 28  # resize target
             self.channels = 1
             self.pretrain = False # choose to use pretrained model or training from scratch
-            self.model_name = 'shared' #customized/vgg16/19
-            self.version_as_suffix = 'try'
+            self.model_name = '2CNN' #2CNN/shared
+            self.version_as_suffix = '15:1'
             self.batch_size = 64
-            self.epochs = 100
+            self.epochs = 150
             self.show_plot = False
 
     args = init_args()
@@ -65,8 +65,11 @@ if __name__ == '__main__':
 
 
     # init CNN
-    model = init_shared_model(args)
-    #model = init_2CNN_model(args)
+    if args.model_name == '2CNN':
+        model = init_2CNN_model(args)
+    elif args.model_name == 'shared':
+        model = init_shared_model(args)
+
     model.summary()
 
     # training

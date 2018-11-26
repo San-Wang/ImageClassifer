@@ -10,7 +10,8 @@ from keras.utils import to_categorical
 
 from keras import backend as K
 import numpy as np
-np.random.seed(3)
+
+np.random.seed(2018)
 K.clear_session()
 K.set_image_dim_ordering('tf')
 
@@ -27,8 +28,8 @@ if __name__ == '__main__':
             self.img_size = 28  # resize target
             self.channels = 1
             self.pretrain = False # choose to use pretrained model or training from scratch
-            self.model_name = 'cifar10_wider' #customized/cifar10_wider/deeper/vgg16/vgg19/inception/xception/resnet50
-            self.version_as_suffix = 'delete'
+            self.model_name = 'cifar10_deeper' #customized/cifar10_wider/deeper/vgg16/vgg19/inception/xception/resnet50
+            self.version_as_suffix = 'try1'
             self.batch_size = 64
             self.epochs = 100
             self.show_plot = False # plot loss/acc against epoch using CSVLogger data

@@ -71,7 +71,7 @@ def init_model_scratch(args):
         model: keras.models.Model().compile()
 
     Here I used:
-    input: 24*24*1
+    input: 28*28*1
     conv1: 16*(3,3)
     pooling1: max
     conv2: 32*(3,3)
@@ -107,16 +107,15 @@ def init_model_scratch(args):
 
 def init_cifar10_wider(args):
     """
-    input: 24*24*1
+    input: 28*28*1
     conv1: 32*(3,3)
     pooling1: max
     conv2: 64*(3,3)
     pooling2
     conv3: 128*(3,3)
-    fc1: 256
+    fc1: 512
     dropout
-    fc2: 128
-    pred: 10
+    fc3: 10
     """
     img_size = args.img_size
     channels = args.channels
@@ -131,8 +130,7 @@ def init_cifar10_wider(args):
     flatten = Flatten(name='flatten')(conv3)
     fc1 = Dense(units=512, activation='relu', name='fc1')(flatten)
     dropout = Dropout(rate=0.5, name='dropout')(fc1)
-    fc2 = Dense(units=128, activation='relu', name='fc2')(dropout)
-    predictions = Dense(units=num_class, activation='softmax', name='prediction')(fc2)
+    predictions = Dense(units=num_class, activation='softmax', name='prediction')(dropout)
     model = models.Model(inputs=inputs, outputs=predictions)
     model.compile(
         optimizer=optimizers.Adam(),
@@ -143,7 +141,17 @@ def init_cifar10_wider(args):
 
 def init_cifar10_deeper(args):
     """
-
+    input
+    8@conv1
+    16@conv2, pool1
+    32@conv3
+    32@conv4, pool2
+    64@conv5
+    32@conv6, pool3
+    flatten
+    128@fc1
+    dropout
+    10@fc2(output)
     """
     img_size = args.img_size
     channels = args.channels
@@ -157,11 +165,12 @@ def init_cifar10_deeper(args):
     conv4 = Conv2D(32, (3, 3), padding='same', activation='relu', name='conv4')(conv3)
     pool2 = MaxPooling2D(name='pool2')(conv4)
     conv5 = Conv2D(64, (3, 3), padding='same', activation='relu', name='conv5')(pool2)
-    flatten = Flatten(name='flatten')(conv5)
-    fc1 = Dense(units=256, activation='relu', name='fc1')(flatten)
+    conv6 = Conv2D(32, (3,3), padding='same', activation='relu', name='conv6')(conv5)
+    pool3 = MaxPooling2D(name='pool3')(conv6)
+    flatten = Flatten(name='flatten')(pool3)
+    fc1 = Dense(units=128, activation='relu', name='fc1')(flatten)
     dropout = Dropout(rate=0.5, name='dropout')(fc1)
-    fc2 = Dense(units=128, activation='relu', name='fc2')(dropout)
-    predictions = Dense(units=num_class, activation='softmax', name='prediction')(fc2)
+    predictions = Dense(units=num_class, activation='softmax', name='prediction')(dropout)
     model = models.Model(inputs=inputs, outputs=predictions)
     model.compile(
         optimizer=optimizers.Adam(),

@@ -97,14 +97,15 @@ if __name__ == '__main__':
             self.epochs = 100
             self.show_plot = False
 
-    #args = init_args()
-    args = init_2CNN_args()
+    args = init_args()
+    #args = init_2CNN_args()
 
-    model_name = '2CNN_10_28_100_64_try2'
+    model_name = 'customized_10_28_100_64_shuffle'
 
     log_path = '/Users/San/Projects/ImageClassifier/callbacks/{}.log'.format(model_name)
     fig_path = '/Users/San/Projects/ImageClassifier/Present/{}_loss.png'.format(model_name)
 
-    plot_2CNN_training(args, log_path)
+    plot_training(args, log_path)
+    #plot_2CNN_training(args, log_path)
     plt.savefig(fig_path, bbox_inches='tight')
 

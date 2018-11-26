@@ -139,8 +139,11 @@ REFERENCE
 =========
 https://blog.keras.io/how-convolutional-neural-networks-see-the-world.html  
 https://www.cs.toronto.edu/~kriz/cifar.html  
+http://alexlenail.me/NN-SVG/LeNet.html  
+
 
 Experiment results:  
+==================  
 
 Q1:  
 
@@ -154,16 +157,22 @@ Q2 (a)
 |-----------|-------------|----------|--------------|------|  
 | 2CNN_10_28_100_64_try2.h5 | 27.81 | ('a_pred_acc', 0.45), ('b_pred_acc', 0.975) | 30:1 | loss doesn't improve around a_pred_acc: 0.8629 |  
 | 2CNN_10_28_100_64_try2.h5 | 26.33 | ('a_pred_acc', 0.453), ('b_pred_acc', 0.974) | 15: 1 | loss doesn't improve start epoch 71, around a_pred_acc: 0.77 |  
+| 2CNN_10_28_100_64_15:1.h5 | 30.20 | ('a_pred_acc', 0.411), ('b_pred_acc', 0.978) | 15:1 |  |  
 
-Q2 b  
+
+Q2 (b)  
 
 | model name| time (mins) | test acc |  loss weight |  
 |-----------|-------------|----------|--------------|  
 | shared_10_28_100_64_try.h5 | 26.75 | ('a_pred_acc', 0.492), ('b_pred_acc', 0.974) | 15: 1 |  
+| shared_10_28_100_64_15:1.h5 | 24.21 | ('a_pred_acc', 0.453), ('b_pred_acc', 0.971) | 15:1 |  
+
 
 only classify cifar10  
 
 | model name| time (mins) | test acc | note |     
 |-----------|-------------|----------|------|  
 | customized_10_28_100_64_shuffle.h5 | 14.09 | 0.509 | |  
+| cifar10_deeper_10_28_100_64_try1.h5 | 37.2 | 0.516 | |  
+| cifar10_10_28_100_64_try.h5 | 35.57 | 0.518 | wider CNN, acc quickly reach high but finally result not high|  
   
