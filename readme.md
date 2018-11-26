@@ -28,7 +28,7 @@ Content included in this repo:
 
 Future add on
 -------------  
-[ ] 
+[ ] collect module code into seperate folder  
 [ ] automating tensorboard viz for deeper layers  
 [ ] https://js.tensorflow.org/  
 note: train and deploy model in browser  
