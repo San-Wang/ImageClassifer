@@ -1,15 +1,13 @@
-from preprocess import define_preprocess_func, data_pipeline, test_data_generator
-from plot import plot_training
-from metrics import evaluation
-from training import TimeLine, train
-from CNNs import init_pretrained_model, init_model_scratch, init_cifar10_wider, init_cifar10_deeper
-
-
-from keras import optimizers, models
+import numpy as np
+from keras import backend as K
+from keras import models
 from keras.utils import to_categorical
 
-from keras import backend as K
-import numpy as np
+from utils.CNNs import init_pretrained_model, init_model_scratch, init_cifar10_wider, init_cifar10_deeper, \
+    init_cifar2_new
+from utils.plot import plot_training
+from utils.preprocess import define_preprocess_func, data_pipeline
+from utils.training import train
 
 np.random.seed(2018)
 K.clear_session()
@@ -21,15 +19,15 @@ if __name__ == '__main__':
     class init_args(object):
         def __init__(self):
             self.callbacks_dir = '/Users/San/Projects/ImageClassifier/callbacks'
-            self.train_dir = '/Users/San/Projects/ImageClassifier/data/CIFAR10/Train'
+            self.train_dir = '/Users/San/Projects/ImageClassifier/data/cifar2/Train'
             self.val_dir = None
-            self.test_dir = '/Users/San/Projects/ImageClassifier/data/CIFAR10/Test'
-            self.num_class = 10
+            self.test_dir = '/Users/San/Projects/ImageClassifier/data/cifar2/Test'
+            self.num_class = 2
             self.img_size = 28  # resize target
             self.channels = 1
             self.pretrain = False # choose to use pretrained model or training from scratch
-            self.model_name = 'cifar10_deeper' #customized/cifar10_wider/deeper/vgg16/vgg19/inception/xception/resnet50
-            self.version_as_suffix = 'try1'
+            self.model_name = 'cifar2_deeper' #customized/cifar10_wider/deeper/vgg16/vgg19/inception/xception/resnet50
+            self.version_as_suffix = 'live'
             self.batch_size = 64
             self.epochs = 100
             self.show_plot = False # plot loss/acc against epoch using CSVLogger data
@@ -50,6 +48,8 @@ if __name__ == '__main__':
         model = init_cifar10_wider(args)
     elif args.model_name == 'cifar10_deeper':
         model = init_cifar10_deeper(args)
+    elif args.model_name == 'cifar2_deeper':
+        model = init_cifar2_new(args)
     else:
         raise ValueError('can not find matched model, try the following: customized/vgg16/vgg19/inception/xception/resnet50')
 

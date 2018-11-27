@@ -1,4 +1,5 @@
-# Image Classifier
+# Image Classifier  
+This is a package that contain modules covering 4 major steps(read data, build CNN, training, evaluation) in image classification problems.  
 
 MOTIVATION
 ==========  
@@ -28,7 +29,7 @@ Content included in this repo:
 
 Future add on
 -------------  
-[ ] collect module code into seperate folder  
+[ ] collect module code into separate folder  
 [ ] automating tensorboard viz for deeper layers  
 [ ] https://js.tensorflow.org/  
 note: train and deploy model in browser  
@@ -83,22 +84,47 @@ Test: 1,000 28*28 gray images evenly in 10 classes
 
 USE INSTRUCTION  
 ===============  
-    
-environment  
------------  
-python3.6  
-
-Scripts  
+ 
+scripts structure overview    
 ------  
-modules:  
-proprocess.py: various data reading pipelines  
+
+| Read Data | Build CNNs | Training | Evaluation |  
+|-----------|------------|----------|------------|  
+| preprocess.py | CNNs.py | training.py | metrics.py, plot.py |  
+
+utils modules:  
+```
+proprocess.py: various data reading pipelines   
+    |--define_preprocess_func()  
+    |--data_pipeline()  
+    |--train_data_generator()  
+    |--test_data_generator()  
+
 CNNs.py: various pre-defined CNN structure  
-training.py: define training process   
+    |--init_model_scratch()   
+    |--init_pretrained_model()  
+    |--init_2CNN_model()  
+    |--init_shared_model()  
+    |--init_cifar10_wider()  
+    |--init_cifar10_deeper()  
+
+training.py: define training process  
+    |--train()  
+    |--train_on_generator()  
+    |--train_2CNN()  
+
 metrics.py: functions that evaluation model performance  
+    |--evaluation()  
+    |--evaluation_on_generator()  
+      
 plot.py: plot functions  
+    |--plot_training()  
+    |--plot_2CNN_training()  
+```
 
 main scripts:  
-train_*.py
+train_1CNN.py  
+train_2CNN.py  
 
     ##### steps in main script overview ########
     # 1. build data pipeline
@@ -134,6 +160,11 @@ train_*.py
     #   args = parse_args()
     # run python train.py --train_dir train/ -val_dir test/
     ############################################
+
+environment  
+-----------  
+python3.6  
+
 
 REFERENCE
 =========

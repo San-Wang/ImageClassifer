@@ -1,10 +1,11 @@
 import matplotlib.pyplot as plt
+
 import pandas as pd
 
 def plot_training(args, log_path):
     """plot training result from csv log file
 
-    csv cols: epoch, acc, loss, val_acc, val_loss
+    csv cols: epoch, acc, loss, [val_acc, val_loss]
 
     args:
         :log_path: csv_path
@@ -27,9 +28,9 @@ def plot_training(args, log_path):
     #plt.show()
 
 def plot_2CNN_training(args, log_path):
-    """plot training result from csv log file
+    """plot training result for  multi-inputs models from csv log file
 
-    csv cols: epoch, acc, loss, val_acc, val_loss
+    csv cols: epoch, a_pred_acc, a_pred_loss, b_pred_acc, b_pred_loss
 
     args:
         :log_path: csv_path
@@ -59,6 +60,8 @@ def plot_time(time_path):
     fig.autofmt_xdate()
     #plt.show()
 
+def plot_kernel():
+    pass
 
 
 if __name__ == '__main__':

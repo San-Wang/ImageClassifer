@@ -298,3 +298,45 @@ def init_shared_model(args):
     )
 
     return model
+
+
+def init_cifar2_new(args):
+    """
+    input
+    8@conv1
+    16@conv2, pool1
+    32@conv3
+    32@conv4, pool2
+    64@conv5
+    32@conv6, pool3
+    flatten
+    128@fc1
+    dropout
+    10@fc2(output)
+    """
+    img_size = args.img_size
+    channels = args.channels
+    num_class = args.num_class
+
+    inputs = Input(shape=(img_size, img_size, channels), name='input')
+    conv0 = Conv2D(8, (3,3), padding='same', activation='relu', name='conv0')(inputs)
+    conv1 = Conv2D(8, (3,3), padding='same', activation='relu', name='conv1')(conv0)
+    conv2 = Conv2D(16, (3,3), padding='same', activation='relu', name='conv2')(conv1)
+    pool1 = MaxPooling2D(name='pool1')(conv2)
+    conv3 = Conv2D(32, (3,3), padding='same', activation='relu', name='conv3')(pool1)
+    conv4 = Conv2D(32, (3, 3), padding='same', activation='relu', name='conv4')(conv3)
+    pool2 = MaxPooling2D(name='pool2')(conv4)
+    conv5 = Conv2D(64, (3, 3), padding='same', activation='relu', name='conv5')(pool2)
+    conv6 = Conv2D(32, (3,3), padding='same', activation='relu', name='conv6')(conv5)
+    pool3 = MaxPooling2D(name='pool3')(conv6)
+    flatten = Flatten(name='flatten')(pool3)
+    fc1 = Dense(units=128, activation='relu', name='fc1')(flatten)
+    dropout = Dropout(rate=0.5, name='dropout')(fc1)
+    predictions = Dense(units=num_class, activation='softmax', name='prediction')(dropout)
+    model = models.Model(inputs=inputs, outputs=predictions)
+    model.compile(
+        optimizer=optimizers.Adam(),
+        loss='categorical_crossentropy',
+        metrics=['accuracy']
+    )
+    return model

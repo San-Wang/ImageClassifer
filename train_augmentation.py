@@ -1,16 +1,11 @@
-from utils import parse_args
-from preprocess import define_preprocess_func, data_pipeline
-from plot import plot_training
-from metrics import evaluation_on_generator
-from training import TimeLine, train, train_on_generator
-from CNNs import init_pretrained_model, init_model_scratch, init_cifar10_wider, init_cifar10_deeper
-
-
-from keras import optimizers, models
-from keras.utils import to_categorical
 from keras.preprocessing import image
 
-from keras import backend as K
+from utils.CNNs import init_pretrained_model, init_model_scratch, init_cifar10_wider, init_cifar10_deeper
+from utils.metrics import evaluation_on_generator
+from utils.plot import plot_training
+from utils.preprocess import define_preprocess_func
+from utils.training import train_on_generator
+
 K.clear_session()
 K.set_image_dim_ordering('tf')
 

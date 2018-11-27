@@ -1,32 +1,13 @@
-from preprocess import define_preprocess_func, data_pipeline, test_data_generator
-from plot import plot_training
-from metrics import evaluation_on_generator, evaluation
-from training import TimeLine, train
-from CNNs import init_2CNN_model, init_shared_model
-
-import os
-import pandas as pd
-import matplotlib.pyplot as plt
-import argparse
-from time import time
-import datetime
-import cv2
-import glob
-from keras.utils import to_categorical
-from keras.preprocessing import image
-from keras.applications import vgg16
-from keras.applications import vgg19
-from keras.applications import resnet50
-from keras.applications import inception_v3
-from keras.applications import xception
-from keras.applications import imagenet_utils
-from keras.layers import Input, GlobalAveragePooling2D, Dense, Dropout, Flatten, Activation, Conv2D, MaxPooling2D
-from keras import losses
-from keras import optimizers, models
-from keras.callbacks import Callback, LambdaCallback, TensorBoard, ModelCheckpoint, CSVLogger
-
-from keras import backend as K
 import numpy as np
+from keras import backend as K
+from keras import models
+from keras.utils import to_categorical
+
+from utils.CNNs import init_2CNN_model, init_shared_model
+from utils.plot import plot_training
+from utils.preprocess import define_preprocess_func, data_pipeline
+from utils.training import train
+
 np.random.seed(2018)
 K.clear_session()
 K.set_image_dim_ordering('tf')

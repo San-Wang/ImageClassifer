@@ -1,12 +1,8 @@
-import os
 from keras import models
-import glob
-import cv2
-import numpy as np
 from sklearn.metrics import confusion_matrix, classification_report, accuracy_score
 from sklearn.preprocessing import LabelBinarizer
 
-from preprocess import *
+from utils.preprocess import *
 
 
 ########################################
