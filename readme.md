@@ -39,45 +39,28 @@ note: train and deploy model in browser
 DATASET
 ==============  
 * data structure  
-```
-Cells  
-Train: 2000 28*28 gray images evenly in 4 classes  
-Test: 800 28*28 gray images evenly in 4 classes  
+```  
 |--Train/Test  
-    |--0/ single cells.png  
-    |--1/ double.png  
-    |--2/ triple.png  
-    |--3/ four.png  
+    |--class0/ 
+        img_name.png  
+    |--class1/ 
+    |--class2/ 
+    |--class3/ 
+    ...
     
+for example:      
 CIFAR10  
-Train: 10,000 28*28 gray images evenly in 10 classes  
-Test: 1,000 28*28 gray images evenly in 10 classes  
 |--Train/Test  
-    |--0/ airplane.png  
-    |--1/ automobile.png  
-    |--2/ bird.png  
-    |--3/ cat.png  
-    |--4/ deer.png  
-    |--5/ dog.png  
-    |--6/ frog.png  
-    |--7/ horse.png  
-    |--8/ ship.png  
-    |--9/ truck.png  
-    
-MNIST  
-Train: 10,000 28*28 gray images evenly in 10 classes    
-Test: 1,000 28*28 gray images evenly in 10 classes 
-|--Train/Test  
-    |--0/ 0.png  
-    |--1/ 1.png  
-    |--2/ 2.png  
-    |--3/ 3.png  
-    |--4/ 4.png  
-    |--5/ 5.png  
-    |--6/ 6.png  
-    |--7/ 7.png  
-    |--8/ 8.png  
-    |--9/ 9.png  
+    |--0/ airplane.png...  
+    |--1/ automobile.png...  
+    |--2/ bird.png...  
+    |--3/ cat.png...  
+    |--4/ deer.png...  
+    |--5/ dog.png...  
+    |--6/ frog.png...  
+    |--7/ horse.png...  
+    |--8/ ship.png...  
+    |--9/ truck.png...  
 ```
     
 * data cleaning log  
@@ -125,8 +108,8 @@ plot.py: plot functions
 ```
 
 main scripts:  
-train_1CNN.py  
-train_2CNN.py  
+train_1CNN.py: train one CNN with single input/output  
+train_2CNN.py: train two CNNs simultaneously with multi-inputs/outputs  
 
     ##### steps in main script overview ########
     # 1. build data pipeline
