@@ -29,7 +29,8 @@ Content included in this repo:
 
 Future add on
 -------------  
-[ ] collect module code into separate folder  
+[√] collect module code into separate folder  
+[√] viz first layer kernels  
 [ ] automating tensorboard viz for deeper layers  
 [ ] https://js.tensorflow.org/  
 note: train and deploy model in browser  
@@ -85,8 +86,9 @@ Test: 1,000 28*28 gray images evenly in 10 classes
 USE INSTRUCTION  
 ===============  
  
-scripts structure overview    
+Script    
 ------  
+structure overview:  
 
 | Read Data | Build CNNs | Training | Evaluation |  
 |-----------|------------|----------|------------|  
